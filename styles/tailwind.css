@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	html {
+		font-family: Minipax;
+		overscroll-behavior-x: none;
+	}
+}
+
+@font-face {
+	font-family: Minipax;
+	src: url("/fonts/Minipax-Regular.woff2");
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: Minipax;
+	src: url("/fonts/Minipax-Medium.woff2");
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: Minipax;
+	src: url("/fonts/Minipax-Semibold.woff2");
+	font-weight: 600;
+}
+
+@font-face {
+	font-family: Minipax;
+	src: url("/fonts/Minipax-Bold.woff2");
+	font-weight: 700;
+}

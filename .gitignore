@@ -1,0 +1,11 @@
+node_modules
+
+/.cache
+/build
+/public/build
+/public/.DS_Store
+.env
+/.DS_Store
+/prisma/dev.db
+
+/app/tailwind.css

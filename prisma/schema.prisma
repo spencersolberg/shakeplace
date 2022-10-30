@@ -1,0 +1,28 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Namer {
+  name String @id @unique
+
+  pixels Pixel[]
+}
+
+model Pixel {
+  id        String  @id @default(cuid())
+  color     String
+  x         Int
+  y         Int
+  signature String?
+  active    Boolean @default(true)
+
+  placedAt DateTime
+
+  namer Namer  @relation(fields: [name], references: [name])
+  name  String
+}
