@@ -2,6 +2,7 @@ import { db } from "~/lib/db.server";
 import type { UnidentifiedPixel } from "~/lib/hsd.server";
 
 import { filterPixels } from "~/lib/utils";
+import type { NamerPixel } from "~/lib/utils";
 
 export const getAllPixels = async () => {
 	const pixels = await db.pixel.findMany({
@@ -20,7 +21,7 @@ export const getAllPixels = async () => {
 	return pixels;
 };
 
-export const getNamerPixels = async (name: string) => {
+export const getNamerPixels = async (name: string): Promise<NamerPixel[]> => {
 	return await db.pixel.findMany({
 		where: {
 			name: name
@@ -34,7 +35,7 @@ export const getNamerPixels = async (name: string) => {
 			placedAt: true,
 			color: true,
 			id: true,
-			active: true
+			active: true,
 		}
 	});
 };

@@ -3,8 +3,9 @@ import { Link } from "@remix-run/react";
 import { FixedSizeList as List } from "react-window";
 
 import { constructMessage, getAltColor } from "~/lib/utils";
+import type { NamerPixel } from "~/lib/utils";
 
-export default function PixelTable({ pixels }: { pixels: Pixel[] }) {
+export default function PixelTable({ pixels }: { pixels: NamerPixel[] }) {
 	return (
 		<>
 			<div className="mx-auto grid grid-cols-7 max-w-sm mb-1">
@@ -20,7 +21,7 @@ export default function PixelTable({ pixels }: { pixels: Pixel[] }) {
 	);
 }
 interface RowProps {
-	data: Pixel[];
+	data: NamerPixel[];
 	index: number;
 	style: any;
 }
@@ -39,7 +40,7 @@ function Row({ data, index, style }: RowProps) {
 			<h2 className="text-center">{pixel.y}</h2>
 			<h2 className="text-center">{pixel.color}</h2>
 			<h2 className="text-center text-xs my-auto col-span-2">
-				{new Date(pixel.placedAt).toLocaleDateString()}
+				{pixel.placedAt.toLocaleDateString()}
 			</h2>
 			<Link
 				to={`/${pixel.x},${pixel.y}`}
@@ -60,7 +61,7 @@ function Row({ data, index, style }: RowProps) {
 }
 
 interface PixelListProps {
-	data: Pixel[];
+	data: NamerPixel[];
 }
 function PixelList({ data }: PixelListProps) {
 	return (

@@ -9,7 +9,12 @@ import Timer from "~/lib/components/timer";
 
 import { getPixel } from "~/lib/pixels.server";
 import { getProfile } from "~/lib/hsd.server";
-import { getAltColor, formatName, constructMessage } from "~/lib/utils";
+import {
+	getAltColor,
+	formatName,
+	constructMessage,
+	revivePixels
+} from "~/lib/utils";
 
 type LoaderData = {
 	pixel: Pixel;
@@ -34,7 +39,10 @@ export const loader: LoaderFunction = async ({ params }) => {
 
 export default function Pixel() {
 	const params = useParams();
-	const { pixel, profile } = useLoaderData<LoaderData>();
+	// const { pixel } = useLoaderData<LoaderData>();
+	const loaderData = useLoaderData<typeof loader>();
+	const { profile } = loaderData;
+	const pixel: Pixel = revivePixels([loaderData.pixel])[0];
 
 	return (
 		<main>
@@ -150,7 +158,7 @@ export default function Pixel() {
 						at
 						<br />
 						<span className="font-bold">
-							{new Date(pixel.placedAt).toLocaleString()}
+							{pixel.placedAt.toLocaleString()}
 						</span>
 						.
 					</p>

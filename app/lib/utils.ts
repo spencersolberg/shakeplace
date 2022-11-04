@@ -13,6 +13,20 @@ export const formatName = (
 	return formattedName;
 };
 
+export const revivePixels = (
+	serializedPixels: any[]
+) => {
+	const revived = [];
+	for (let pixel of serializedPixels) {
+		revived.push({
+			...pixel,
+			placedAt: new Date(pixel.placedAt)
+		});
+
+	}
+	return revived;
+}
+
 export const constructMessage = ({
 	x,
 	y,
@@ -74,6 +88,15 @@ export const getAltColor = (hexCode: string): string => {
 	if (color.isReadable(harmony)) {
 		return harmony;
 	} else return color.invert().toHex();
+};
+
+export type NamerPixel = {
+	id: string;
+	x: number;
+	y: number;
+	color: string;
+	placedAt: Date;
+	active: boolean;
 };
 
 export type UnsignedPixel = {

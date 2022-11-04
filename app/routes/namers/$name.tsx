@@ -1,11 +1,16 @@
-import type { LoaderFunction } from "@remix-run/node";
+import type {
+	LoaderArgs,
+	LoaderFunction,
+	SerializeFrom
+} from "@remix-run/node";
 import type { Pixel } from "@prisma/client";
 import { json } from "@remix-run/node";
 import { useLoaderData, useParams, Link } from "@remix-run/react";
 
 import { getProfile } from "~/lib/hsd.server";
 import { getNamerPixels } from "~/lib/pixels.server";
-import { formatName } from "~/lib/utils";
+import { formatName, revivePixels } from "~/lib/utils";
+import type { NamerPixel } from "~/lib/utils";
 
 import Header from "~/lib/components/header";
 import NameLink from "~/lib/components/nameLink";
@@ -13,23 +18,34 @@ import SocialLink from "~/lib/components/socialLink";
 import PixelTable from "~/lib/components/pixelTable";
 import Timer from "~/lib/components/timer";
 
-type LoaderData = {
-	profile: Awaited<ReturnType<typeof getProfile>>;
-	pixels: Pixel[];
-};
+// type LoaderData = {
+// 	profile: Awaited<ReturnType<typeof getProfile>>;
+// 	pixels: Pixel[];
+// };
 
-export const loader: LoaderFunction = async ({ params }) => {
+export async function loader({ params }: LoaderArgs) {
 	const name: string = params.name!;
 
 	const profile = await getProfile(name);
 	const pixels = await getNamerPixels(name);
 
 	return json({ profile, pixels });
-};
+}
+
+// export const loader: LoaderFunction = async ({ params }) => {
+// 	const name: string = params.name!;
+
+// 	const profile = await getProfile(name);
+// 	const pixels = await getNamerPixels(name);
+
+// 	return json({ profile, pixels });
+// };
 
 export default function Namer() {
 	const { name } = useParams();
-	const { profile, pixels } = useLoaderData<LoaderData>();
+	const loaderData = useLoaderData<typeof loader>();
+	const { profile } = loaderData;
+	const pixels: NamerPixel[] = revivePixels(loaderData.pixels);
 
 	return (
 		<main>

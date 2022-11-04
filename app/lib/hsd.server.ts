@@ -1,5 +1,4 @@
 import { NodeClient } from "hs-client";
-import type { Pixel } from "@prisma/client";
 import { constructMessage } from "~/lib/utils";
 import { fetchAddress, setServers } from "hip2-dane";
 

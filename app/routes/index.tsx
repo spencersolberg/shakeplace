@@ -24,7 +24,13 @@ import {
 } from "~/lib/pixels.server";
 import { verifyPixel } from "~/lib/hsd.server";
 import { connect } from "~/lib/ws.server";
-import { colors, getAltColor, formatName, constructMessage } from "~/lib/utils";
+import {
+	colors,
+	getAltColor,
+	formatName,
+	constructMessage,
+	revivePixels
+} from "~/lib/utils";
 import io from "socket.io-client";
 
 type LoaderData = {
@@ -82,8 +88,12 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function Index() {
-	const { existingPixels } = useLoaderData<LoaderData>();
+	// const { existingPixels } = useLoaderData<LoaderData>();
 	const navigate = useNavigate();
+	const existingPixels: Pixel[] = revivePixels(
+		useLoaderData<LoaderData>().existingPixels
+	);
+
 	if (existingPixels.length < 65536) navigate("/", { replace: true });
 	const [pixels, setPixels] = useState<Pixel[]>(existingPixels);
 	const [socket, setSocket] = useState<ReturnType<typeof io>>();
@@ -101,7 +111,7 @@ export default function Index() {
 				x,
 				y,
 				color,
-				placedAt,
+				placedAt: new Date(placedAt),
 				id,
 				active: true,
 				signature: null
@@ -114,7 +124,7 @@ export default function Index() {
 		if (newPixel.name === name) {
 			window.localStorage.setItem(
 				"nextPlaceTime",
-				String(new Date(newPixel.placedAt).getTime() + 5 * 60 * 1000)
+				String(newPixel.placedAt.getTime() + 5 * 60 * 1000)
 			);
 		}
 		// console.log("Current Pixels:", pixels.length);
@@ -412,7 +422,7 @@ function PixelInfo({ selectedPixel }: PixelProps) {
 				at{" "}
 				<b>
 					{selectedPixel
-						? new Date(selectedPixel.placedAt).toLocaleString()
+						? selectedPixel.placedAt.toLocaleString()
 						: "an unknown time"}
 				</b>
 				.
