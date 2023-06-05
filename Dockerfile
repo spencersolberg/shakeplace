@@ -24,10 +24,11 @@ RUN npm run build
 ENV NODE_ENV=production
 
 # Install HSD
-RUN npm install -g https://github.com/handshake-org/hsd.git
+# RUN npm install -g https://github.com/handshake-org/hsd.git
 
 # Install concurrently
-RUN npm install -g concurrently
+# RUN npm install -g concurrently
 
 # Start app
-CMD concurrently "hsd --no-wallet" "npm run start"
+# CMD concurrently "hsd --no-wallet --spv" "npm run start"
+CMD ["npm", "run", "start"]

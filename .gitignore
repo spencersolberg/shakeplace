@@ -4,7 +4,6 @@ node_modules
 /build
 /public/build
 /public/.DS_Store
-.env
 /.DS_Store
 /prisma/dev.db
 
