@@ -134,10 +134,23 @@ Run HSD
 hsd --no-wallet
 ```
 
-Install node modules and launch run script
+Install node modules
 
 ```bash
 npm i
+```
+
+Set up Prisma database
+
+```bash
+npx prisma generate
+npx prisma db push
+npx prisma db seed
+```
+
+Run the server
+
+```bash
 npm run dev
 ```
 
