@@ -88,10 +88,12 @@
 <!-- Env Variables -->
 ### Environment Variables
 
-Currently, the only environment variable to modify is the database file. I've included a default .env file, so you don't have to create one yourself.
+There are a few environment variables. If you are running HSD locally, you shouldn't need to change them.
 
 ```env
 DATABASE_URL=sqlite:./dev.db
+HSD_HOST=127.0.0.1
+HSD_PORT=12037
 ```
 
 <!-- Getting Started -->

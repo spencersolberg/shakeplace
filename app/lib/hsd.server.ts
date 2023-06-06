@@ -1,6 +1,8 @@
 // @ts-ignore
 import { NodeClient } from "hs-client";
 import { constructMessage } from "~/lib/utils";
+import { config } from "dotenv";
+config();
 // @ts-ignore
 // import { fetchAddress, setServers } from "hip2-dane";
 
@@ -19,9 +21,11 @@ export type UnidentifiedPixel = {
 	name: string;
 };
 
+console.log(process.env.HSD_HOST, process.env.HSD_PORT)
+
 const hsdOptions = {
-	port: 12037,
-	host: "127.0.0.1"
+	port: parseInt(process.env.HSD_PORT ?? "12037"),
+	host: process.env.HSD_HOST ?? "127.0.0.1"
 };
 
 const hsd = new NodeClient(hsdOptions);

@@ -38,7 +38,8 @@ export default function Settings() {
 				<h2 className="text-3xl mx-auto text-center mt-2 font-medium">
 					made with ❤️ by{" "}
 					<a
-						href="https://spencersolberg.com"
+						href="https://spencersolberg/"
+						target="_blank"
 						className="underline hover:text-blue-500 decoration-blue-500 hover:italic border-b-black pb-4 border-b"
 					>
 						spencersolberg/
