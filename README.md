@@ -177,5 +177,5 @@ npm run start
 ## Acknowledgements
 
 
-* [Minipax Typeface](http://www.velvetyne.fr/fonts/minipax/) by Raphaël Ronot from Velvetyne Type Foundry
+* [Minipax Typeface](https://www.velvetyne.fr/fonts/minipax/) by Raphaël Ronot from Velvetyne Type Foundry
 * [Awesome Readme Template](https://github.com/Louis3797/awesome-readme-template) by Louis3797
