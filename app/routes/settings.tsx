@@ -55,13 +55,14 @@ export default function Settings() {
 				</h2>
 				<h2 className="text-xl font-medium mt-8 mx-auto max-w-sm">
 					<a
-						href="#"
+						href="/downloadDatabase"
 						className="underline hover:text-blue-500 decoration-blue-500 hover:italic"
+						download
 					>
-						Download Database (COMING SOON)
+						Download Database
 					</a>
 				</h2>
-				<div className="flex flex-col max-w-sm mx-auto items-center mt-36">
+				{/* <div className="flex flex-col max-w-sm mx-auto items-center mt-36">
 					<h1 className="text-6xl mx-auto text-center pl-1 font-bold">
 						Settings
 					</h1>
@@ -95,7 +96,7 @@ export default function Settings() {
 							Music (COMING SOON)
 						</label>
 					</div>
-				</div>
+				</div> */}
 			</div>
 		</main>
 	);

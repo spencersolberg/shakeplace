@@ -18,7 +18,7 @@ import PixelBoard from "~/lib/components/pixelBoard";
 import Timer from "~/lib/components/timer";
 
 import {
-	getAllPixels,
+	getCurrentPixels,
 	getLastNamerPlacement,
 	createPixel
 } from "~/lib/pixels.server";
@@ -38,7 +38,7 @@ type LoaderData = {
 };
 
 export const loader: LoaderFunction = async () => {
-	const existingPixels = await getAllPixels();
+	const existingPixels = await getCurrentPixels();
 	return json({ existingPixels });
 };
 

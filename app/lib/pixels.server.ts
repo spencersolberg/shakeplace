@@ -4,11 +4,25 @@ import type { UnidentifiedPixel } from "~/lib/hsd.server";
 import { filterPixels } from "~/lib/utils";
 import type { NamerPixel } from "~/lib/utils";
 
-export const getAllPixels = async () => {
+export const getCurrentPixels = async () => {
 	const pixels = await db.pixel.findMany({
 		where: {
 			active: true
 		},
+		select: {
+			x: true,
+			y: true,
+			placedAt: true,
+			color: true,
+			name: true,
+			id: true
+		}
+	});
+	return pixels;
+};
+
+export const getAllPixels = async () => {
+	const pixels = await db.pixel.findMany({
 		select: {
 			x: true,
 			y: true,
