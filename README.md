@@ -88,15 +88,10 @@
 <!-- Env Variables -->
 ### Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+Currently, the only environment variable to modify is the database file. I've included a default .env file, so you don't have to create one yourself.
 
 ```env
-VITE_DB_ADMIN_USERNAME=admin
-VITE_DB_ADMIN_PASSWORD=password
-VITE_DB_BACKEND_HOST=localhost
-VITE_DB_FRONTEND_HOST=localhost
-VITE_DB_BACKEND_PORT=1234
-VITE_DB_FRONTEND_PORT=1234
+DATABASE_URL=sqlite:./dev.db
 ```
 
 <!-- Getting Started -->
