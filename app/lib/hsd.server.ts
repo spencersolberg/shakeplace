@@ -1,11 +1,12 @@
 // @ts-ignore
 import { NodeClient } from "hs-client";
 import { constructMessage } from "~/lib/utils";
+// @ts-ignore
 // import { fetchAddress, setServers } from "hip2-dane";
 
 // setServers([
-// 	// "127.0.0.1:5350"
-// 	"165.22.151.242:5350"
+// 	"127.0.0.1:5350"
+// 	// "165.22.151.242:5350"
 // ]);
 
 
