@@ -1,6 +1,4 @@
 <div align="center">
-
-  <img src="https://file.coffee/u/ITUN4e__CVqo4j.png" alt="logo" width="200" height="auto" />
   <h1>Shakeplace</h1>
   
   <p>
@@ -110,6 +108,13 @@ VITE_DB_FRONTEND_PORT=1234
 * [Node.js (v16.13.0) / NPM (8.1.0)](https://github.com/nvm-sh/nvm)
 * [HSD](https://github.com/handshake-org/hsd/blob/master/docs/install.md)
 
+#### OR
+
+* [Docker](https://docs.docker.com/get-docker/)
+
+---
+You will need a lot of space for the Handshake blockchain.
+
 <!-- Installation -->
 ### Installation
 
@@ -118,7 +123,6 @@ Clone Shakeplace repo and install dependencies with NPM
 ```bash
 git clone https://github.com/spencersolberg/shakeplace
 cd shakeplace
-npm i
 ```
    
 <!-- Run Locally -->
@@ -127,14 +131,25 @@ npm i
 Run HSD
 
 ```bash
-hsd
+hsd --no-wallet
 ```
 
-Launch run script
+Install node modules and launch run script
 
 ```bash
+npm i
 npm run dev
 ```
+
+#### OR
+
+Run with Docker
+
+```bash
+docker build --no-cache -t shakeplace .
+docker run -p 3000:3000 shakeplace
+```
+
 <!-- Building -->
 ### Building
 

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { NodeClient } from "hs-client";
 import { constructMessage } from "~/lib/utils";
 // import { fetchAddress, setServers } from "hip2-dane";
@@ -19,7 +20,7 @@ export type UnidentifiedPixel = {
 
 const hsdOptions = {
 	port: 12037,
-	host: "host.docker.internal"
+	host: "127.0.0.1"
 };
 
 const hsd = new NodeClient(hsdOptions);
