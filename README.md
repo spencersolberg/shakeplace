@@ -94,6 +94,7 @@ There are a few environment variables. If you are running HSD locally, you shoul
 DATABASE_URL=sqlite:./dev.db
 HSD_HOST=127.0.0.1
 HSD_PORT=12037
+HSD_API_KEY=
 ```
 
 <!-- Getting Started -->
@@ -120,6 +121,7 @@ Clone Shakeplace repo and install dependencies with NPM
 ```bash
 git clone https://github.com/spencersolberg/shakeplace
 cd shakeplace
+cp .env.example .env
 ```
    
 <!-- Run Locally -->
