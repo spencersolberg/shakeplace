@@ -21,8 +21,6 @@ export type UnidentifiedPixel = {
 	name: string;
 };
 
-console.log(process.env.HSD_HOST, process.env.HSD_PORT)
-
 const hsdOptions = {
 	port: parseInt(process.env.HSD_PORT ?? "12037"),
 	host: process.env.HSD_HOST ?? "127.0.0.1"
