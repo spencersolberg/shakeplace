@@ -6,3 +6,7 @@ node_modules
 /public/.DS_Store
 /.DS_Store
 /prisma/dev.db
+
+.env
+*.env
+!.env.example
