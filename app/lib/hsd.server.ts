@@ -23,7 +23,8 @@ export type UnidentifiedPixel = {
 
 const hsdOptions = {
 	port: parseInt(process.env.HSD_PORT ?? "12037"),
-	host: process.env.HSD_HOST ?? "127.0.0.1"
+	host: process.env.HSD_HOST ?? "127.0.0.1",
+	apiKey: process.env.HSD_API_KEY ?? null
 };
 
 const hsd = new NodeClient(hsdOptions);
