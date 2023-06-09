@@ -37,6 +37,10 @@ export default function App() {
 				<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 				<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 				<link rel="manifest" href="/site.webmanifest" />
+				<meta name="twitter:card" content="summary" />
+				<meta name="twitter:description" content="Paint your pixel" />
+				<meta name="twitter:title" content="Shakeplace" />
+				<meta name="twitter:image" content="/shakeplace.png" />
 			</head>
 			<body
 				style={{
