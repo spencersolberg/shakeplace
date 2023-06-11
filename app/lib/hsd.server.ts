@@ -51,7 +51,14 @@ type Resource = {
 };
 
 export const getProfile = async (name: string): Promise<Profile> => {
-	const { records }: Resource = await hsd.execute("getnameresource", [name]);
+	// const { records }: Resource = await hsd.execute("getnameresource", [name]);
+	let records: Resource["records"];
+	try {
+		records = (await hsd.execute("getnameresource", [name])).records;
+	} catch (e) {
+		console.error(e);
+		return {};
+	}
 	const txtRecords: string[] = records
 		.filter((r) => r.type === "TXT")
 		.map(({ txt }) => txt)
