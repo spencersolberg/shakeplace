@@ -103,6 +103,16 @@ export default function Login() {
 						</a>
 						.
 					</p>
+					<p className="text-center text-xl mt-4 font-medium">
+						<Link
+							to="/"
+							prefetch="intent"
+							className="underline hover:text-blue-500 decoration-blue-500 hover:italic"
+							>
+							Go Back
+						</Link>
+					</p>
+
 				</div>
 			)}
 		</main>
