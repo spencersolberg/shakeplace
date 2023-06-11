@@ -6,6 +6,11 @@ import { Link } from "@remix-run/react";
 import { useState, useEffect } from "react";
 
 export default function Settings() {
+	useEffect(() => {
+		setName(window.localStorage.getItem("name") ?? undefined);
+	}, []);
+
+	const [name, setName] = useState<string>();
 	return (
 		<main>
 			<Header>
@@ -63,6 +68,27 @@ export default function Settings() {
 						Download Database
 					</a>
 				</h2>
+				{ name ? (
+					<Link
+						to="/"
+						prefetch="intent"
+						className="text-2xl font-medium hover:italic hover:text-white hover:bg-black hover:rounded-full mt-4 px-2 pt-1 pb-2 text-center mx-auto border border-black rounded-full"
+						onClick={() => {
+							localStorage.removeItem("name");
+						}
+						}
+					>
+						Logout
+					</Link>
+				) : (
+					<Link
+						to="/login"
+						prefetch="intent"
+						className="text-2xl font-medium hover:italic hover:text-white hover:bg-black hover:rounded-full mt-4 px-2 pt-1 pb-2 text-center mx-auto border border-black rounded-full"
+					>
+						Login
+					</Link>
+				)}
 				{/* <div className="flex flex-col max-w-sm mx-auto items-center mt-36">
 					<h1 className="text-6xl mx-auto text-center pl-1 font-bold">
 						Settings
